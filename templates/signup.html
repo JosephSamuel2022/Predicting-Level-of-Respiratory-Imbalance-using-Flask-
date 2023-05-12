@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign Up Page</title>
+    <style>
+    body,html{
+        height: 100%;
+        margin:0;
+    }
+    html{
+        background-image: url('bg2.jpg');
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+    .header{
+        width:auto;
+        height: auto;
+        margin-bottom: 30px;
+        padding:18px;
+        background: #5b5da6f3;
+    }
+    .header h1{
+        color: rgb(251, 255, 20);
+    }
+    .container{
+        position: relative;
+        margin:30px auto;
+        width: 500px;
+        height:auto;
+        padding-bottom: 10px;
+        border-radius: 5px;
+        background: rgba(253, 251, 251, 0.938);
+    }
+    .container form{
+        margin:50px;
+        font-size: 18px;
+    }
+    .container h1{
+        background: rgba(21, 233, 180, 0.548);
+        color: rgb(226, 48, 17);
+        margin:0px auto;
+        padding:30px;
+        text-align: center;
+    }
+    .container input{
+        width:100%;
+        margin-top: 10px;
+        padding:10px;
+        background-color:rgba(170, 211, 238, 0.89);
+        border:2px solid #f0eded;
+        border-radius: 5px;
+    }
+    .container button{
+        background: #16e09d;
+        color: white;
+        font-size: 17px;
+        font-weight: bold;
+        width: 160px;
+        margin-top: 10px;
+        padding: 15px;
+        border:1px;
+        border-radius: 50px;
+        cursor:pointer;
+    }
+    .container p{
+        font-size:18px;
+    }
+    </style>
+<script>
+    function validateform(){
+        var a,b,c,d,e,f,g,h;
+        a=document.getElementById("pid").value;
+        b=document.getElementById("fname").value;
+        c=document.getElementById("lname").value;
+        d=document.getElementById("gender").value;
+        e=document.getElementById("location").value;
+        f=document.getElementById("email").value;
+        g=document.getElementById("password").value;
+        h=document.getElementById("repassword").value;
+        
+        var phoneInput = document.getElementById("mobileno");
+        if(a=="")
+        {alert("Patient ID must be filled!");return false;}
+        if(b=="")
+        {alert("Patient First Name must be filled!");return false;}
+        if(c=="")
+        {alert("Patient Last Name must be filled!");return false;}
+        if(d=="")
+        {alert("Patient Gender must be selected!");return false;}
+        // Add event listener for when user types into the field
+        phoneInput.addEventListener("input", function() {
+       // Remove all non-numeric characters from the input field
+       this.value = this.value.replace(/\D/g,''); 
+      // Limit the length of the input to 10 characters
+    if (this.value.length > 10) {
+      this.value = this.value.slice(0,10);
+    }
+  });    
+        if(e="")
+        {alert("Patient Location must be filled!");return false;}
+        if(f="")
+        {alert("Patient Email ID must be filled!");return false;}
+        if(g="")
+        {alert("Password must be filled!");return false;}
+        if(g!=h)
+        {alert("Password does not match!");return false;}
+        
+    }    
+</script>
+</head>
+
+<body> 
+    <div class="header">
+        <center><h1>Predict Level of Respiratory Imbalance</h1></center>
+    </div>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form id="signup" action="/signup" method="POST">
+            <label for="pid">Enter the Patient ID: </label><br>
+            <input name="pid" id="pid" type="text" placeholder="Patient ID"><br><br>
+        <label for="fname">Enter the Patient First Name: </label><br>
+        <input name="fname" id="fname" type="text" placeholder="First Name"><br><br>
+        <label for="lname">Enter the Patient Last Name: </label><br>
+        <input name="lname" id="lname" type="text" placeholder="Last Name"><br><br>
+        <label for="dob">Enter the Patient DOB: </label><br>
+        <input name="dob" id="dob" type="date" placeholder="Date of Birth"><br><br>
+        <label for="gender">Select Patient Gender :</label><br>
+        <input type="radio" id="male"  name="gender" value="male">
+        <label for="gender">Male</label><br>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="gender">Female</label><br><br>
+        <label for="mobileno">Enter the Mobile Number :</label>
+        <input type="tel" id="mobileno" name="mobileno" placeholder="Mobile Number"><br><br>
+        <label for="email">Enter the Email ID: </label><br>
+        <input name="email" id="email" type="text" placeholder="Email Address"><br><br>
+        <label for="location">Enter Patient Location :</label>
+        <input id="location" name="location" type="text" placeholder="Location"><br><br>
+        <label for="password">Password: </label><br>
+        <input name="password" id="password" type="password" placeholder="Your password"><br><br>
+        <label for="repassword">Re-enter your password: </label><br>
+        <input name="repassword" id="repassword" type="password" placeholder="Re-enter password"><br><br>
+        <center>  
+        <button form="signup" type="submit" name="signup">SIGN UP</button>
+        </center>
+        </form>
+        <p align="center">Already have an account? <a href='{{ url_for('login') }}'>Login</a></p>
+    </div><br>
+
+</body>
+</html>

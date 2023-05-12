@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/styles2.css">
+    <title>Predicting Level of Respiratory Imbalance</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <script src="/static/validate1.js"></script>
+</head>
+<body>
+     <div class="form">
+        <div class="form-panel one">
+          <div class="form-header">
+            <h1>Your Test Report</h1>
+          </div><br>
+          <div class="form-header">
+            <h2>Welcome {{user}},</h2>
+          </div>
+          <div class="form-content">
+            <form name="form1" >
+              <p> The Test says that you have been suffering from </p>  
+              {{ prediction_text }}
+              <br><br>
+              <img src="data:image/png;base64,{{ plot_data }}" alt="My Plot">
+              <br><br>
+              <img src="data:image/png;base64,{{ bar_data }}" alt="My Plot">
+              <br><br>
+              <img src="data:image/png;base64,{{ heart_rate_data }}" alt="My Plot">
+              <br><br>
+              <img src="data:image/png;base64,{{ wordcloud_data }}" alt="My Plot">
+            </form>
+			 
+          </div>
+        </div>
+    </div>
+</body>
+</html>

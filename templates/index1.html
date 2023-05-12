@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./static/styles2.css">
+    <title>Predicting Level of Respiratory Imbalance</title>
+    <script src=".static/validate1.js"></script>
+</head>
+<body>
+    <div class="form">
+        <div class="form-panel one">
+          <div class="form-header">
+            <h1>Predict Level of Respiratory Imbalance</h1>
+          </div><br>
+          <div class="form-header">
+            <h2>Enter the following values to predict the level of Respiratory Imbalance</h2>
+          </div>
+          <div class="form-content">
+            <form name="form1" onsubmit="return validateForm()" method="post">
+              <div class="form-group">
+                <label>Is Dehydration Present? (Select "1" for "Yes" or "0" for "No")</label><br>
+                <div class="slider">
+                  <input type="range" min="0" max="1" value="0" name="Dehydration" placeholder="Dehydration" 
+                  required="required" oninput="rangeValue.innerText = this.value"/>
+                  <p id="rangeValue">0</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Is Medicine Overdose Present? (Select "1" for "Yes" or "0" for "No")</label>
+                <div class="slider">
+                  <input type="range" min="0" max="1" value="0" name="Medicine_Overdose"  
+                  required="required" oninput="rangeValue2.innerText = this.value"/>
+                  <p id="rangeValue2">0</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Is Acidious Present? (Select "1" for "Yes" or "0" for "No")</label>
+                <div class="slider">
+                  <input type="range" min="0" max="1" value="0" name="Acidious"  
+                  required="required" oninput="rangeValue3.innerText = this.value"/>
+                  <p id="rangeValue3">0</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Is Cold Present? (Select "1" for "Yes" or "0" for "No")</label>
+                <div class="slider">
+                  <input type="range" min="0" max="1" value="0" name="Cold" 
+                  required="required" oninput="rangeValue4.innerText = this.value"/>
+                  <p id="rangeValue4">0</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Is Cough Present? (Select "1" for "Yes" or "0" for "No")</label>
+                <div class="slider">
+                  <input type="range" min="0" max="1" value="0" name="Cough" 
+                  required="required" oninput="rangeValue5.innerText = this.value"/>
+                  <p id="rangeValue5">0</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Enter Type Value</label>
+                <div class="slider">
+                  <input type="range" min="0" max="5" value="0" name="Type" 
+                  required="required" oninput="rangeValue6.innerText = this.value"/>
+                  <p id="rangeValue6">0</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Enter Temperature Value</label>
+                <div class="slider">
+                  <input type="range" min="95" max="106" value="95" name="Temperature" 
+                  required="required" oninput="rangeValue7.innerText = this.value"/>
+                  <p id="rangeValue7">95</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Enter Heart Rate Value</label>
+                <div class="slider">
+                  <input type="range" min="50" max="200" value="50" name="Heart_Rate" 
+                  required="required" oninput="rangeValue8.innerText = this.value"/>
+                  <p id="rangeValue8">50</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Enter Pulse Value</label>
+                <div class="slider">
+                  <input type="range" min="50" max="200" value="50" name="Pulse" 
+                  required="required" oninput="rangeValue9.innerText = this.value"/>
+                  <p id="rangeValue9">50</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Enter BPSYS Value</label>
+                <div class="slider">
+                  <input type="range" min="90" max="120" value="90" name="BPSYS" 
+                  required="required" oninput="rangeValue10.innerText = this.value"/>
+                  <p id="rangeValue10">90</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Enter BPDIA Value</label>
+                <div class="slider">
+                  <input type="range" min="40" max="100" value="40" name="BPDIA" 
+                  required="required" oninput="rangeValue11.innerText = this.value"/>
+                  <p id="rangeValue11">40</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Enter Respiratory Rate Value</label>
+                <div class="slider">
+                  <input type="range" min="6" max="60" value="6" name="Respiratory_Rate" 
+                  required="required" oninput="rangeValue12.innerText = this.value"/>
+                  <p id="rangeValue12">6</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Enter Oxygen Saturation Value</label>
+                <div class="slider">
+                  <input type="range" min="0.90" max="1" step="0.01" value="0.90" name="Oxygen_Saturation" 
+                  required="required" oninput="rangeValue13.innerText = this.value"/>
+                  <p id="rangeValue13">0.90</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Enter PH Value</label>
+                <div class="slider">
+                  <input type="range" min="1" max="14" value="1" name="PH" 
+                  required="required" oninput="rangeValue14.innerText = this.value"/>
+                  <p id="rangeValue14">1</p>
+                </div>
+              </div>
+              <br><br>
+              <div class="form-group">
+                <button type="submit">Predict</button>
+              </div>
+              <div class="form-group">
+                <button type="reset">Clear</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+</body>
+</html>
