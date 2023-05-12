@@ -17,9 +17,11 @@
           </div>
           <div class="form-content">
             <form name="form1" >
-              <p> The Test says that you have been suffering from </p>  
-              {{ prediction_text }}
+              <p> Your level of Respiratory Imbalance is :</p>  
+              <img src="data:image/png;base64,{{ prediction_img }}" alt="My Plot">
               <br><br>
+              <p>{{prediction_text}}</p>
+              
               <img src="data:image/png;base64,{{ plot_data }}" alt="My Plot">
               <br><br>
               <img src="data:image/png;base64,{{ bar_data }}" alt="My Plot">

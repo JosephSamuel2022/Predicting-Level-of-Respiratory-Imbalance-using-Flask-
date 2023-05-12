@@ -255,7 +255,29 @@ def predict():
 
     cursor = db.patient_details.find_one({"pid": pid})
     name = cursor['fname']+" "+cursor['lname']
-    return render_template('home.html', wordcloud_data=wordcloud_data, user=name, heart_rate_data=heart_rate_data, bar_data=bar_data, plot_data=plot_data, prediction_text='{}'.format(prediction))
+
+    if prediction == "Chronic":
+        prediction_text = "Based on your respiratory imbalance prediction, it is recommended that you see a specialist who can manage the long-term care of your condition, such as a pulmonologist or allergist. They can help manage your symptoms, provide guidance on lifestyle changes, and help prevent exacerbations."
+        with open("static/images/chronic.jpg", "rb") as image_file:
+            prediction_img = base64.b64encode(
+                image_file.read()).decode('utf-8')
+    elif prediction == "Severe":
+        prediction_text = "Based on your respiratory imbalance prediction, it is recommended that you visit a specialist such as a pulmonologist or respiratory therapist. These doctors can provide advanced treatments and therapies to help manage your condition, including oxygen therapy or mechanical ventilation."
+        with open("static/images/severe.jpg", "rb") as image_file:
+            prediction_img = base64.b64encode(
+                image_file.read()).decode('utf-8')
+    elif prediction == "Mild":
+        prediction_text = "Based on your respiratory imbalance prediction, it is recommended that you visit your primary care physician or a family doctor. They can help assess your condition, provide guidance on lifestyle changes, and recommend any medications that may be helpful."
+        with open("static/images/mild.jpg", "rb") as image_file:
+            prediction_img = base64.b64encode(
+                image_file.read()).decode('utf-8')
+    else:
+        prediction_text = "Based on your respiratory imbalance prediction, you do not necessarily need to see a doctor specifically for respiratory issues. However, it is still recommended that you see your primary care physician or family doctor for routine check-ups and preventive care to maintain your overall health."
+        with open("static/images/normal.jpg", "rb") as image_file:
+            prediction_img = base64.b64encode(
+                image_file.read()).decode('utf-8')
+
+    return render_template('home.html', prediction_text=prediction_text, wordcloud_data=wordcloud_data, user=name, heart_rate_data=heart_rate_data, bar_data=bar_data, plot_data=plot_data, prediction_img=prediction_img)
 
 
 if __name__ == '__main__':
